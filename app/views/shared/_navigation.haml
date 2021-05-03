@@ -1,0 +1,11 @@
+- if current_user
+  .container
+    .row.justify-content-md-center.align-items-center
+      .col-sm-6.h2
+        = link_to backend_users_path do
+          Klimabox
+      .col-sm-4.text-right.h5
+        Email:
+        = link_to current_user.email, edit_backend_user_path(current_user)
+      .col-sm-2.text-right
+        = link_to "Logout", logout_path, class: "btn btn-danger"

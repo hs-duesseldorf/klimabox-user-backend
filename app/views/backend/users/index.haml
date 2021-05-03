@@ -1,0 +1,36 @@
+.container
+  %h1
+    Nutzer
+  .row.mt-3
+    = link_to new_backend_user_path do
+      .btn.btn-primary
+        Neuer Nutzer
+  .row.mt-3
+    .col-sm-3
+      ID
+    .col-sm-3
+      E-Mail
+    .col-sm-3
+      Admin
+    .col-sm-3.d-flex
+      Actions
+  %hr
+  - @users.each do |user|
+    .row.mt-3
+      .col-sm-3
+        = user.id
+      .col-sm-3
+        = user.email
+      .col-sm-3
+        - if user.admin?
+          Admin
+        - else
+          Nutzer
+      .col-sm-3
+        = link_to edit_backend_user_path(user) do
+          .btn.btn-primary
+            Bearbeiten
+        = link_to backend_user_path(user), method: :delete do
+          .btn.btn-warning
+            Löschen
+

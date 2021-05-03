@@ -1,0 +1,11 @@
+.container
+  .row.justify-content-md-center.mt-4
+    .col-sm-6
+      %h2
+        Login
+      = bootstrap_form_for :session, url: sessions_path do |f|
+        = f.email_field :email, required: true
+        = f.password_field :password, required: true
+        = f.submit "Login"
+
+      = link_to 'Passwort zurücksetzten', new_password_reset_path

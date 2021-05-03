@@ -1,0 +1,9 @@
+.container
+  = bootstrap_form_for @user, url: backend_users_path, method: :post do |f|
+    = f.text_field :email, class: "form-control"
+    = f.password_field :password, class: "form-control"
+    = f.password_field :password_confirmation, class: "form-control"
+    = f.check_box :admin, checked: false, class: "form-check-input"
+
+
+    = f.submit "Erstellen", class: "btn btn-primary float-right"
