@@ -12,6 +12,14 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  namespace :api do
+    namespace :v1 do
+      resource :session, only: [:show, :create, :destroy]
+
+      resources :users
+    end
+  end
+
   resources :users do
     get :activate, on: :member
     post :reset_password, on: :member

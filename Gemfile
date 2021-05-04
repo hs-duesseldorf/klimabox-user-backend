@@ -14,6 +14,8 @@ gem 'html2haml'
 
 gem "bootstrap_form", "~> 4.0"
 
+gem 'active_model_serializers'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.6'
 # Use postgresql as the database for Active Record

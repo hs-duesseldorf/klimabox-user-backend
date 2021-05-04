@@ -14,7 +14,7 @@ rails 6.0.3.6
 ### Datenbank erstellen
 `$ rails db:create db:migrate db:seed` oder `rails db:create db:setup` Durch das seeden wird ein Admin Account erstellt, damit die Seite genutzt werden kann
 
-####Admin Daten:
+### Admin Daten:
 admin@klimabox.com
 admin1234
 
@@ -45,6 +45,9 @@ localhost:3000/letter_opener
 
 ### Git Regeln
 Neuer Branch von Main abzweigen. Name des Branches: `feature/$name`. Pull/Merge Request stellen und dann wieder in Main mergen.
+
+### Postman
+Tool zum ansteueren der API. https://www.postman.com/downloads/
 
 
 
