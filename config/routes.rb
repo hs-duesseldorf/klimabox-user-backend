@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :session, only: [:show, :create, :destroy]
+      post 'authenticate', to: 'sessions#authenticate', as: 'authenticate'
+      resource :sessions, only: [:show]
 
       resources :users
     end
