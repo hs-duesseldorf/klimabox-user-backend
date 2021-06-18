@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user
       if user.admin
         flash[:success] = "Login erfolgreich."
-        redirect_to backend_users_path
+        redirect_to backend_dashboard_path
       else
         logout
         flash[:error] = "Nur Administratoren haben Zugang"

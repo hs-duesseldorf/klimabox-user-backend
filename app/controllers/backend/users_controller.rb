@@ -39,7 +39,7 @@ module Backend
     def destroy
       @user = User.find_by(id: params[:id])
 
-      if @user.delete
+      if @user.destroy
         redirect_to backend_users_path
       else
         # Flashmessage

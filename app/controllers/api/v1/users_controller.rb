@@ -33,7 +33,7 @@ module Api
 
       def destroy
         if @user.delete
-          render json: {message: "User Erfolgreich gelöscht"}, serializer: UserSerializer , status: 200
+          render json: {message: "User erfolgreich gelöscht"}, status: 200
         else
           render json: { error: "Da ist etwas schief gelaufen. Bitte nochmal probieren" }, status: 422
         end
