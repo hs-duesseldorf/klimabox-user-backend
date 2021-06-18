@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :backend do
     resources :users
+    resources :favorite_blogposts
+    get 'dashboard', to: 'dashboard#dashboard'
   end
 
   namespace :api do

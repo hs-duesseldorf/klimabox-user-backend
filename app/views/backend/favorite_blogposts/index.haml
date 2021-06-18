@@ -1,37 +1,34 @@
 .container
   %h1
-    Nutzer
+    Favorisierte Blogposts
   = render "backend/shared/navigation"
   .row.mt-3
-    = link_to new_backend_user_path do
+    = link_to new_backend_favorite_blogpost_path do
       .btn.btn-primary
-        Neuer Nutzer
+        Neuer Favorisierter Blogpost
   .row.mt-3
     .col-sm-3
       ID
     .col-sm-3
-      E-Mail
+      UserID
     .col-sm-3
-      Admin
+      Slug
     .col-sm-3.d-flex
       Actions
   %hr
-  - @users.each do |user|
+  - @posts.each do |post|
     .row.mt-3
       .col-sm-3
-        = user.id
+        = post.id
       .col-sm-3
-        = user.email
+        = post.user_id
       .col-sm-3
-        - if user.admin?
-          Admin
-        - else
-          Nutzer
+        = post.slug
       .col-sm-3
-        = link_to edit_backend_user_path(user) do
+        = link_to edit_backend_favorite_blogpost_path(post) do
           .btn.btn-primary
             Bearbeiten
-        = link_to backend_user_path(user), method: :delete do
+        = link_to backend_favorite_blogpost_path(post), method: :delete do
           .btn.btn-warning
             Löschen
 
