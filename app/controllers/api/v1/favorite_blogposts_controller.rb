@@ -2,21 +2,15 @@ module Api
   module V1
     class FavoriteBlogpostsController < ::Api::V1::BaseController
       before_action :authenticate_cookie
-      before_action :set_post, except: [:create, index]
-
-      before_action :check_current_user, except: [:create]
 
 
-      def index
+      def favorits
         @posts = current_user.favorite_blogposts
+        render json: { slugs: @posts.map(&:slug)}
       end
 
-      def show
-        @post
-      end
-
-      def create
-        @post = FavoriteBlogpost.new(posts_params)
+      def favorise
+        @post = FavoriteBlogpost.new(user: current_user, slug: posts_params[:slug])
         if @post.save
           render json: @post, serializer: FavoriteBlogpostSerializer , status: 200
         else
@@ -24,7 +18,8 @@ module Api
         end
       end
 
-      def destroy
+      def defavorise
+        @post = FavoriteBlogpost.find_by(slug: posts_params[:slug])
         if @post.delete
           render json: {message: "Eintrag erfolgreich gelöscht"}, status: 200
         else
@@ -34,18 +29,8 @@ module Api
 
       private
 
-      def set_post
-        @post = FavoriteBlogpost.find_by(id: params[:id])
-      end
-
-      def check_current_user
-        if current_user != @user
-          render json: { errors: "Kein Zugriff erlaubt" }, status: 403
-        end
-      end
-
       def posts_params
-        params.require(:favorite_blogpost).permit(:user_id, :slug)
+        params.require(:favorite_blogpost).permit(:slug)
       end
     end
   end

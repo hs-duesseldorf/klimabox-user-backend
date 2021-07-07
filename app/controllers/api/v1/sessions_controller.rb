@@ -1,7 +1,7 @@
 module Api
   module V1
     class SessionsController < ::Api::V1::BaseController
-      before_action only: [:show] do
+      before_action only: [:show, :destroy] do
         authenticate_cookie
       end
 
@@ -22,6 +22,16 @@ module Api
           render json: @user, serializer: UserSerializer , status: 200
         else
           render json: { error: command.errors }, status: :unauthorized
+        end
+      end
+
+      def destroy
+        user = current_user
+        if user
+          cookies.delete(:jwt)
+          render json: {status: 'OK', code: 200}
+        else
+          render json: {status: 'session not found', code: 404}
         end
       end
 
