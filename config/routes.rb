@@ -10,13 +10,21 @@ Rails.application.routes.draw do
 
   namespace :backend do
     resources :users
+    resources :favorite_blogposts
+    get 'dashboard', to: 'dashboard#dashboard'
   end
 
   namespace :api do
     namespace :v1 do
-      resource :session, only: [:show, :create, :destroy]
+      post 'authenticate', to: 'sessions#authenticate', as: 'authenticate'
+      get "logout", to: "sessions#destroy", as: 'logout'
+      resource :sessions, only: [:show]
 
       resources :users
+
+      get 'favorits', to: 'favorite_blogposts#favorits'
+      post 'favorise', to: 'favorite_blogposts#favorise'
+      post 'defavorise', to: 'favorite_blogposts#defavorise'
     end
   end
 

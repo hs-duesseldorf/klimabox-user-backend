@@ -17,5 +17,15 @@ module KlimaboxBackend
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.autoloader = :classic
+
+    config.autoload_paths << Rails.root.join('lib')
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+         origins 'http://localhost:3001'
+         resource '*', headers: :any, credentials: true, methods: [:get, :post, :patch, :delete, :options]
+       end
+    end
   end
 end
