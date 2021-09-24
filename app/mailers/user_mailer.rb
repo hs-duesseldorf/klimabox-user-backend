@@ -7,13 +7,13 @@ class UserMailer < ApplicationMailer
 
   def activation_success_email(user)
     @user = user
-    @url  = "#{Rails.configuration.url["base_url"]}/login"
+    @url  = "#{Rails.configuration.url["client_url"]}/signin"
     mail(to: user.email, subject: "Dein Klimabox Account ist aktiviert")
   end
 
   def reset_password_email(user)
     @user = User.find user.id
-    @url  = edit_password_reset_url(@user.reset_password_token)
+    @url  = "#{Rails.configuration.url["client_url"]}/reset_password?token=#{@user.reset_password_token}"
     mail(to: user.email, subject: "Passwort zurücksetzten")
   end
 end
