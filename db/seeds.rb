@@ -1,4 +1,6 @@
 User.all.map(&:destroy)
+Topic.all.map(&:destroy)
+FavoriteBlogpost.all.map(&:destory)
 
 users = [
   User.new(admin: true, email: 'admin@klimabox.com', password: 'admin1234', password_confirmation: 'admin1234'),
@@ -10,3 +12,14 @@ users.each do |user|
   user.save!
   user.activate!
 end
+
+topics = [
+  Topic.new(name: "Mobilität"),
+  Topic.new(name: "Bauen & Sanieren"),
+  Topic.new(name: "Energie"),
+  Topic.new(name: "Ernährung"),
+  Topic.new(name: "Kleidung")
+]
+
+
+topics.each.map(&:save)

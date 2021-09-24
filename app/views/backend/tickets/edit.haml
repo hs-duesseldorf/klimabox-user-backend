@@ -1,0 +1,32 @@
+.container
+  = bootstrap_form_for @ticket, url: backend_ticket_path(@ticket), method: :patch do |f|
+    .form-select
+      = f.select :user_id, options_for_select((User.all).map{|u| [u.email, u.id]}, f.object.user_id)
+    .form-group
+      = f.text_field :message, class: "form-control"
+
+    %h3
+      Kommentare
+    .row.mt-3
+      .col-sm-4
+        Datum
+      .col-sm-4
+        Email
+      .col-sm-4
+        Message
+
+    - @ticket.comments.each do |comment|
+      .row.mt-3
+        .col-sm-4
+          = comment.created_at
+        .col-sm-4
+          = comment.user.email
+        .col-sm-4
+          = comment.message
+
+    = link_to new_backend_comment_path do
+      .btn.btn-primary.mt-3
+        Neuer Kommentar
+
+    .div.mt-8
+      = f.submit "Bearbeiten", class: "btn btn-primary float-right"

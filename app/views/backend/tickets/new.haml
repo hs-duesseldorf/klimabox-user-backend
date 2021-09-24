@@ -1,0 +1,9 @@
+.container
+  = bootstrap_form_for @ticket, url: backend_tickets_path, method: :post do |f|
+    .form-select
+      = f.select :user_id, options_for_select((User.all).map{|u| [u.email, u.id]}, f.object.user_id)
+    .form-group
+      = f.text_field :message, class: "form-control"
+
+
+    = f.submit "Erstellen", class: "btn btn-primary float-right"

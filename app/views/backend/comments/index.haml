@@ -1,0 +1,33 @@
+.container
+  %h1
+    Kommentare
+  = render "backend/shared/navigation"
+  .row.mt-3
+    = link_to new_backend_comment_path do
+      .btn.btn-primary
+        Neuer Kommentar
+  .row.mt-3
+    .col-sm-3
+      ID
+    .col-sm-3
+      Ticket ID
+    .col-sm-3
+      Message
+    .col-sm-3.d-flex
+      Actions
+  %hr
+  - @comments.each do |comment|
+    .row.mt-3
+      .col-sm-3
+        = comment.id
+      .col-sm-3
+        = comment.ticket_id
+      .col-sm-3
+        = comment.message
+      .col-sm-3
+        = link_to edit_backend_comment_path(comment) do
+          .btn.btn-primary
+            Bearbeiten
+        = link_to backend_comment_path(comment), method: :delete do
+          .btn.btn-warning
+            Löschen

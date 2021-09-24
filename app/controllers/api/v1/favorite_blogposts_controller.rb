@@ -3,7 +3,6 @@ module Api
     class FavoriteBlogpostsController < ::Api::V1::BaseController
       before_action :authenticate_cookie
 
-
       def favorits
         @posts = current_user.favorite_blogposts
         render json: { slugs: @posts.map(&:slug)}

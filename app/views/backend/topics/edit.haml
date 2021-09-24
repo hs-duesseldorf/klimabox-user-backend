@@ -1,0 +1,9 @@
+.container
+  = bootstrap_form_for @topic, url: backend_topic_path(@topic), method: :patch do |f|
+    .form-group
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.text_field :description, class: "form-control"
+
+
+    = f.submit "Bearbeiten", class: "btn btn-primary float-right"

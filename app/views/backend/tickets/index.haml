@@ -1,0 +1,34 @@
+.container
+  %h1
+    Tickets
+  = render "backend/shared/navigation"
+  .row.mt-3
+    = link_to new_backend_ticket_path do
+      .btn.btn-primary
+        Neues Ticket
+  .row.mt-3
+    .col-sm-3
+      ID
+    .col-sm-3
+      UserID
+    .col-sm-3
+      Message
+    .col-sm-3.d-flex
+      Actions
+  %hr
+  - @tickets.each do |ticket|
+    .row.mt-3
+      .col-sm-3
+        = ticket.id
+      .col-sm-3
+        = ticket.user_id
+      .col-sm-3
+        = ticket.message
+      .col-sm-3
+        = link_to edit_backend_ticket_path(ticket) do
+          .btn.btn-primary
+            Bearbeiten
+        = link_to backend_ticket_path(ticket), method: :delete do
+          .btn.btn-warning
+            Löschen
+

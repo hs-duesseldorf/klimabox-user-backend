@@ -48,7 +48,7 @@ module Backend
 
     private
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :admin)
+      params.require(:user).permit(:email, :password, :password_confirmation, :admin, topic_ids: [])
     end
   end
 end
