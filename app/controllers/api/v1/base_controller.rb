@@ -7,7 +7,6 @@ module Api
       def authenticate_cookie
         token = cookies.signed[:jwt]
         decoded_token = JsonWebToken.decode(token)
-        Rails.logger.debug "Token: #{token}, Decode: #{decoded_token}"
         if decoded_token
           user = User.find_by(id: decoded_token["user_id"])
         end
