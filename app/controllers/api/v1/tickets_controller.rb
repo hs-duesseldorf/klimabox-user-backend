@@ -1,6 +1,7 @@
 module Api
   module V1
     class TicketsController < ::Api::V1::BaseController
+      before_action :authenticate_cookie
 
       def index
         @ticket = current_user.tickets
