@@ -18,7 +18,7 @@ module Api
 
         if command.success?
           @user = User.find_by(email: login_params[:email])
-          cookies.signed[:jwt] = {value: command.result, httponly: true, same_site: :lax, secure: true}
+          cookies.signed[:jwt] = {value: command.result, httponly: true, same_site: :lax}
           render json: @user, serializer: UserSerializer , status: 200
         else
           render json: { error: command.errors }, status: :unauthorized
