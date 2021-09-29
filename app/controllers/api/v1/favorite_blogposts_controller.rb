@@ -1,7 +1,7 @@
 module Api
   module V1
     class FavoriteBlogpostsController < ::Api::V1::BaseController
-      before_action do
+      before_action only: [:favorits, :favorise] do
         authenticate_cookie
       end
 
