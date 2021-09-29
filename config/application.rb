@@ -29,7 +29,7 @@ module KlimaboxBackend
        end
 
       allow do
-        origins 'https://a5a4-2001-16b8-2b0-7400-6556-df0f-26c6-a0c4.ngrok.io'
+        origins 'http://a5a4-2001-16b8-2b0-7400-6556-df0f-26c6-a0c4.ngrok.io'
         resource '*', headers: :any, credentials: true, methods: [:get, :post, :patch, :delete, :options]
       end
     end
