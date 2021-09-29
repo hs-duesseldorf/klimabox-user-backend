@@ -12,4 +12,4 @@ staging:
   <<: *default
 
 production:
-  <<: *default
+  base_url: "http://static.107.116.88.23.clients.your-server.de/"
