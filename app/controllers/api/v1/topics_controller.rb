@@ -1,8 +1,6 @@
 module Api
   module V1
     class TopicsController < ::Api::V1::BaseController
-      before_action :authenticate_cookie
-
       def topics
         @topics = Topic.all
 
