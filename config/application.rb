@@ -18,6 +18,7 @@ module KlimaboxBackend
     # the framework and any gems in your application.
     config.autoloader = :classic
 
+    config.enable_dependency_loading = true
     config.autoload_paths << Rails.root.join('lib')
 
     config.middleware.use ActionDispatch::Cookies
