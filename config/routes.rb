@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :tickets
     resources :comments
     get 'dashboard', to: 'dashboard#dashboard'
+    get 'chart', to: 'dashboard#chart'
   end
 
   namespace :api do

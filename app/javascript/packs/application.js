@@ -7,6 +7,7 @@ import 'bootstrap'
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+import "chartkick/chart.js"
 import '../styles/application.scss'
 
 // Uncomment to copy all static images under ../images to the output folder and reference

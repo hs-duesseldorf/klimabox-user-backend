@@ -1,0 +1,2 @@
+class TopicsUser < ApplicationRecord
+end

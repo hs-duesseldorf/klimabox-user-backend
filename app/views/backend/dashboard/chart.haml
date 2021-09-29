@@ -1,0 +1,7 @@
+.container
+  %h1
+    Dashboard
+
+  = render "backend/shared/navigation"
+
+  = column_chart @data, xtitle: "Topics", ytitle: "Users"
