@@ -1,6 +1,9 @@
 module Api
   module V1
     class CommentsController < ::Api::V1::BaseController
+      before_action do
+        authenticate_cookie
+      end
 
       def create
         @ticket = Ticket.find_by(id: params[:id])

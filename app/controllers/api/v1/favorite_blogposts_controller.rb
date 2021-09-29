@@ -1,7 +1,9 @@
 module Api
   module V1
     class FavoriteBlogpostsController < ::Api::V1::BaseController
-      before_action :authenticate_cookie
+      before_action do
+        authenticate_cookie
+      end
 
       def favorits
         @posts = current_user.favorite_blogposts
